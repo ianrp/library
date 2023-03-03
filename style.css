@@ -3,9 +3,15 @@
   padding: 0;
 }
 
+body {
+  background-color: rgb(46, 46, 46);
+}
+
 table {
   border: 1px solid;
   border-spacing: 0;
+  margin: 20px;
+  background-color: white;
 }
 
 th, td {
@@ -20,4 +26,26 @@ th {
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+.new {
+  margin-left: 20px;
+}
+
+form {
+  width: 350px;
+  border: 1px solid;
+  padding: 15px;
+  margin: 20px;
+  display: none;
+  background-color: white;
+}
+
+form label {
+  float: left;
+  padding-right: 5px;
+}
+
+form input {
+  display: block;
 }
