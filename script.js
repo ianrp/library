@@ -1,6 +1,6 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, id) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -13,35 +13,52 @@ function Book(title, author, pages, read) {
   };
 }
 
-const bookList = document.querySelector('.bookList');
+const bookList = document.querySelector('.book-list');
 
-function addBookToTable(book) {
-  const row = document.createElement('tr');
+function updateTable() {
+  bookList.textContent = '';
 
-  const titleCell = document.createElement('td');
-  titleCell.textContent = book.title;
-  row.appendChild(titleCell);
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    const row = document.createElement('tr');
 
-  const authorCell = document.createElement('td');
-  authorCell.textContent = book.author;
-  row.appendChild(authorCell);
+    const titleCell = document.createElement('td');
+    titleCell.textContent = myLibrary[i].title;
+    row.appendChild(titleCell);
 
-  const pagesCell = document.createElement('td');
-  pagesCell.textContent = book.pages;
-  row.appendChild(pagesCell);
+    const authorCell = document.createElement('td');
+    authorCell.textContent = myLibrary[i].author;
+    row.appendChild(authorCell);
 
-  const readCell = document.createElement('td');
-  if (book.read) readCell.textContent = 'Read';
-  else readCell.textContent = 'Unread';
-  row.appendChild(readCell);
+    const pagesCell = document.createElement('td');
+    pagesCell.textContent = myLibrary[i].pages;
+    row.appendChild(pagesCell);
 
-  bookList.appendChild(row);
+    const readCell = document.createElement('td');
+    if (myLibrary[i].read) readCell.textContent = 'Read';
+    else readCell.textContent = 'Unread';
+    row.appendChild(readCell);
+
+    const removeCell = document.createElement('td');
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'X';
+    removeButton.classList.add('remove-book');
+    removeButton.addEventListener('click', () => removeBook(i));
+    removeCell.appendChild(removeButton);
+    row.appendChild(removeCell);
+
+    bookList.appendChild(row);
+  }
 }
 
-function addBookToLibrary(title, author, pages, read) {
+function addBook(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
-  addBookToTable(book);
+  updateTable();
+}
+
+function removeBook(i) {
+  myLibrary.splice(i, 1);
+  updateTable();
 }
 
 const newBookForm = document.querySelector('form');
@@ -60,14 +77,10 @@ newBookForm.addEventListener('submit', (event) => {
   const pages = formData.get('pages');
   const read = formData.get('read');
 
-  addBookToLibrary(title, author, pages, read);
+  addBook(title, author, pages, read);
 });
-
-function displayLibrary() {
-  myLibrary.forEach((book) => addBookToTable(book));
-}
 
 myLibrary = [
   new Book('The Hobbit', 'J.R.R. Tolkien', 295, true),
   new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 423, false)];
-displayLibrary();
+updateTable();
