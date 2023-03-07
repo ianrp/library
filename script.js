@@ -1,6 +1,6 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read, id) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -10,6 +10,9 @@ function Book(title, author, pages, read, id) {
     if (this.read) info += 'read';
     else info += 'unread';
     return (info);
+  };
+  this.toggleReadStatus = function () {
+    this.read = !this.read;
   };
 }
 
@@ -34,8 +37,11 @@ function updateTable() {
     row.appendChild(pagesCell);
 
     const readCell = document.createElement('td');
-    if (myLibrary[i].read) readCell.textContent = 'Read';
-    else readCell.textContent = 'Unread';
+    const readButton = document.createElement('button');
+    if (myLibrary[i].read) readButton.textContent = 'Read';
+    else readButton.textContent = 'Unread';
+    readButton.addEventListener('click', () => toggleReadStatus(i));
+    readCell.appendChild(readButton);
     row.appendChild(readCell);
 
     const removeCell = document.createElement('td');
@@ -58,6 +64,11 @@ function addBook(title, author, pages, read) {
 
 function removeBook(i) {
   myLibrary.splice(i, 1);
+  updateTable();
+}
+
+function toggleReadStatus(i) {
+  myLibrary[i].toggleReadStatus();
   updateTable();
 }
 
