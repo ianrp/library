@@ -49,3 +49,42 @@ form label {
 form input {
   display: block;
 }
+
+table button {
+  border: none;
+  background: none;
+}
+
+.remove-book img {
+  width: 20px;
+  height: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+tr:hover img {
+  display: block;
+}
+
+thead tr :last-child {
+  width: 20px;
+}
+
+tr svg {
+  width: 25px;
+  height: 25px;
+}
+
+.read-status {
+  fill: green;
+}
+
+.unread-status {
+  fill: red;
+}
+
+td.read-cell {
+  text-align: center;
+}
