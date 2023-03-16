@@ -9,37 +9,58 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <h1>Library</h1>
   <table>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th># Pages</th>
+        <th class="title-head">Title</th>
+        <th class="author-head">Author</th>
+        <th class="pages-head"># Pages</th>
         <th>Read</th>
         <th></th>
       </tr>
     </thead>
+
     <tbody class="book-list"></tbody>
+
+    <form>
+      <tr class="new-row">
+        <td>
+          <input type="text" name="title" value="Title" onfocus="this.select()">
+        </td>
+        <td>
+          <input type="text" name="author" value="Author" onfocus="this.select()">
+        </td>
+        <td>
+          <input type="number" class="pages" name="pages" value="0" onfocus="this.select()">
+        </td>
+        <td class="read-cell">
+          <input type="checkbox" name="read">
+        </td>
+        <td>
+          <input type="image" src="icons/check.svg" class="submit">
+        </td>
+      </tr>
+    </form>
+    
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <button class="new">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+          </button>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 
-  <button class="new">New Book</button>
+  
 
-  <form>
-    <label for="title">Title</label>
-    <input type="text" name="title">
-
-    <label for="author">Author</label>
-    <input type="text" name="author">
-
-    <label for="pages">Number of pages</label>
-    <input type="number" name="pages">
-
-    <label for="read">Has it been read?</label>
-    <input type="checkbox" name="read">
-
-    <br>
-    <input type="submit" class="submit" value="Add Book">
-  </form>
+  
 
 </body>
 </html>

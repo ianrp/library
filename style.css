@@ -1,17 +1,34 @@
 * {
   margin: 0;
   padding: 0;
+  font-size: 16px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body {
   background-color: rgb(46, 46, 46);
 }
 
+h1 {
+  color: rgb(0, 185, 255);
+  font-size: 48px;
+  text-align: center;
+  margin-top: 20px;
+}
+
 table {
   border: 1px solid;
   border-spacing: 0;
-  margin: 20px;
+  margin: 20px auto;
   background-color: white;
+}
+
+.title-head, .author-head {
+  min-width: 220px;
+}
+
+.pages-head {
+  min-width: 70px;
 }
 
 th, td {
@@ -19,8 +36,8 @@ th, td {
   margin: 0px;
 }
 
-th {
-  background-color: orange;
+th, tfoot {
+  background-color: rgb(0, 165, 255);
   color: white;
 }
 
@@ -28,26 +45,31 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.new {
-  margin-left: 20px;
+.new svg {
+  fill: white;
+  width: 50px;
+  height: 25px;
+  padding-top: 2px;
 }
 
-form {
-  width: 350px;
-  border: 1px solid;
-  padding: 15px;
-  margin: 20px;
+tfoot td {
+  padding: 0;
+}
+
+.new-row {
   display: none;
-  background-color: white;
 }
 
-form label {
-  float: left;
-  padding-right: 5px;
+input[type="text"], input[type="number"] {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+  padding-left: 1ch;
+  height: 4ch;
 }
 
-form input {
-  display: block;
+input.pages {
+  width: 7ch;
 }
 
 table button {

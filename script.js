@@ -84,10 +84,15 @@ function toggleReadStatus(i) {
 }
 
 const newBookForm = document.querySelector('form');
+const newBookRow = document.querySelector('.new-row');
 const newBookButton = document.querySelector('.new');
 
 newBookButton.addEventListener('click', () => {
-  newBookForm.style.display = 'block';
+  if (newBookRow.style.display === 'table-row') {
+    newBookRow.style.display = 'none';
+  } else {
+    newBookRow.style.display = 'table-row';
+  }
 });
 
 newBookForm.addEventListener('submit', (event) => {
@@ -98,6 +103,8 @@ newBookForm.addEventListener('submit', (event) => {
   const author = formData.get('author');
   const pages = formData.get('pages');
   const read = formData.get('read');
+
+  newBookRow.style.display = 'none';
 
   addBook(title, author, pages, read);
 });
